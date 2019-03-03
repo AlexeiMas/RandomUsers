@@ -1,28 +1,49 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Header from './components/header/Header'
+import Main from "./components/main/Main";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    state = {
+        data: undefined,
+        newData: undefined,
+        len: undefined
+    };
+
+    getData = async () => {
+        const api_url = await fetch('https://randomuser.me/api/?results=30');
+        const data = await api_url.json();
+        if (data) {
+            console.log("Success", data);
+            this.setState({
+                data: data.results
+            });
+        }
+    };
+
+    componentDidMount() {
+        this.getData()
+    }
+
+    updateData = (newData, len) => {
+        this.setState({newData: newData});
+        this.setState({len: len})
+    };
+
+    render() {
+        let whatNeed = (this.state.newData) ? this.state.newData : this.state.data;
+
+        return (
+            <div className="App" style={(this.state.data) ? {height: "auto"} : {height: "100vh"}}>
+                <Header
+                    data={this.state.data}
+                    updateData={this.updateData}
+                    selectData={whatNeed}
+                />
+                <Main data={whatNeed} len={this.state.len} />
+            </div>
+        );
+    }
 }
 
 export default App;

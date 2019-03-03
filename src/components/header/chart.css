@@ -1,0 +1,39 @@
+.padTopBot {
+    padding: 20px 0;
+}
+
+@media (max-width: 990px) {
+    .padTopBot {
+        text-align: center;
+        padding: 10px 0;
+    }
+}
+
+.popup {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup_inner {
+    position: absolute;
+    text-align: center;
+    left: 25%;
+    right: 25%;
+    top: 25%;
+    bottom: 20%;
+    margin: auto;
+    background: white;
+}
+
+@media (max-width: 1050px) {
+    .popup_inner {
+        left: 5%;
+        right: 5%;
+    }
+}

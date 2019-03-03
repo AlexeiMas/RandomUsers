@@ -1,0 +1,16 @@
+.upFirstChar {
+    text-transform: capitalize;
+}
+.row .col .row b {
+    padding-right: 5px;
+}
+.bordTopNo {
+    border-top: none !important;
+}
+.table-responsive-md th {
+    color: #444444;
+    border-top: none;
+}
+.table-responsive-md td {
+    word-break:break-all;
+}
